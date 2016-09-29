@@ -57,7 +57,8 @@ defmodule Appining.Mixfile do
      {:mix_test_watch, "~> 0.2", only: :dev},
      {:dogma, "~> 0.1", only: :dev},
      {:exq, "~> 0.7.2"},
-     {:exq_ui, "~> 0.7.0"}
+     {:exq_ui, "~> 0.7.0"},
+     {:espec_phoenix, "~> 0.6.1", only: :test, app: false}
     #  {:rethinkdb_ecto, "~> 0.4"}
    ]
   end
