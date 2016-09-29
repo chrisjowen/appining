@@ -35,6 +35,10 @@ config :appining, :eventful,
   base_url: "http://api.eventful.com/rest",
   key: "cswJCZqk4XMsBDsv"
 
+config :appining, :meetup,
+  base_url: "https://api.meetup.com",
+  key: "53c1421333c72274d1c456a866656"
+
 config :mix_test_watch,
   tasks: [
     "espec"
