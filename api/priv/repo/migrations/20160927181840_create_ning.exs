@@ -9,6 +9,9 @@ defmodule Appining.Repo.Migrations.CreateNing do
       add :description, :string
       add :img, :string
       add :source, :string
+      add :url, :string
+      add :how_to_find_us, :string
+      add :venue_id, :integer
       timestamps
     end
 

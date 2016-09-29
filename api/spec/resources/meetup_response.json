@@ -1,0 +1,35 @@
+{
+    "results": [{
+        "venue": {
+            "country": "COUNTRY",
+            "localized_country_name": "COUNTRY_NAME",
+            "city": "CITY",
+            "phone": "PHONE",
+            "address_1": "ADDRESS1",
+            "name": "NAME",
+            "lon": 1,
+            "id": 1,
+            "lat": 2
+        },
+        "description": "DESCRIPTION",
+        "how_to_find_us": "FIND_US",
+        "event_url": "URL",
+        "name": "NAME",
+        "id": "UNIQUE_ID",
+        "time": 1475154000000
+    }],
+    "meta": {
+        "next": "",
+        "method": "OpenEvents",
+        "total_count": 117,
+        "link": "https:\/\/api.meetup.com\/2\/open_events.json",
+        "count": 117,
+        "description": "Searches for recent and upcoming public events hosted by Meetup groups. Its search window  is the past one month through the next three months, and is subject to change. Open Events is optimized to search for current events by location, category, topic, or text, and only lists Meetups that have **3 or more RSVPs**. The number or results returned with each request is not guaranteed to be the same as the page size due to secondary filtering. If you're looking for a particular event or events within a particular group, use the standard [Events](\/meetup_api\/docs\/2\/events\/) method.",
+        "lon": 1.5491,
+        "title": "Meetup Open Events v2",
+        "url": "https:\/\/api.meetup.com\/2\/open_events.json?and_text=False&offset=0&format=json&lon=1.5491&limited_events=False&page=200&radius=100&lat=53.8008&key=53c1421333c72274d1c456a866656&desc=False&status=upcoming",
+        "id": "",
+        "updated": 1475159836650,
+        "lat": 53.8008
+    }
+}
