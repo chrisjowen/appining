@@ -9,8 +9,8 @@ defmodule Appining.Scrapers.Meetup.MeetupClientSpec do
     let :page, do: 1
 
     it "should parse correctly" do
-        result = MeetupClient.search(lat, long, radius, page)
-        expect()
+      result = MeetupClient.search(lat, long, radius, page)
+      result |> should_not(eq nil) 
     end
   end
 
