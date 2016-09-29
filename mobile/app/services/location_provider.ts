@@ -1,7 +1,6 @@
 import { Geolocation } from 'ionic-native';
-import {Observable} from 'rxjs/observable';
 import { provide } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/Rx';
+import { BehaviorSubject, Observable} from 'rxjs/Rx';
 
 export class LocationInfo {
   private watcher;
