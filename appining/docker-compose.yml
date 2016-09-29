@@ -1,0 +1,15 @@
+# docker run --name some-postgis -e POSTGRES_PASSWORD=mysecretpassword -d mdillon/postgis
+version: '2'
+services:
+  postgresi:
+    image: mdillon/postgis
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=appining_repo
+    ports:
+     - "5432:5432"
+  redis:
+    image: redis
+    ports:
+     - "6379:6379"
