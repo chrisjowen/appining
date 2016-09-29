@@ -25,6 +25,7 @@ defmodule Appining.Router do
     pipe_through :api
 
     post "/", NingController, :create
+    get "/nearby/:lat/:lng", NingController, :nearby
 
   end
 end

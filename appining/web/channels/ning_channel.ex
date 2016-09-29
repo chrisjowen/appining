@@ -13,13 +13,9 @@ defmodule Appining.NingChannel do
   end
 
   def handle_in("msg:new:text", message, socket) do
-   Logger.info("Recieved message #{inspect(message)} #{inspect(socket.channel_pid)}")
-   broadcast! socket, "msg:new:text", message
-   {:noreply, socket}
- end
+    Logger.info("Recieved message #{inspect(message)} #{inspect(socket.channel_pid)}")
+    broadcast! socket, "msg:new:text", Map.merge(%{topic: socket.topic}, message)
+    {:noreply, socket}
+  end
 
- def handle_out("msg:new:text", payload, socket) do
-   push socket, "msg:new:text", payload
-   {:noreply, socket}
- end
 end

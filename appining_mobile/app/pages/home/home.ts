@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import { NavController } from 'ionic-angular';
-import  PhoenixChannels  from '../../lib/phoenix_channels';
-import  {PhoenixChannel}  from '../../lib/phoenix_channels';
+import  PhoenixChannels  from '../../services/phoenix_channels';
+import  {PhoenixChannel}  from '../../services/phoenix_channels';
+import  {LocationInfo}  from '../../services/location_provider';
 
 @Component({
   templateUrl: 'build/pages/home/home.html'
@@ -13,20 +14,26 @@ export class HomePage {
   private message: String;
   private eventChannel: PhoenixChannel;
   private viewChannel: PhoenixChannel;
+  private currentLocation: Coordinates;
 
   constructor(
     public navCtrl: NavController,
     private channels : PhoenixChannels,
-    private http : Http) {}
+    private http : Http,
+    private locationInfo: LocationInfo) {
+    }
 
   ngOnInit() {
     this.joinEventChannel()
+    this.locationInfo.locationChanged((location) => this.currentLocation = location.coords )
   }
 
   createNing(name) {
+    let  url =  (window["cordova"]) ? "192.168.1.104:4000" :  "localhost:4000"
+    console.log(location)
     this.http
-        .post("http://localhost:4000/api", {ning: {name: name}} )
-        .subscribe(res => console.log("Response came!!!", res))
+        .post(`http://${url}/api`, {ning: {name: name, position: [this.currentLocation.latitude, this.currentLocation.longitude]}} )
+        .subscribe()
   }
 
   onJoin(name)  {
@@ -37,14 +44,13 @@ export class HomePage {
     this.viewChannel = this.channels.channel(`ning:${name}`);
     this.viewChannel.join().subscribe((result) => {
       this.viewChannel.observeMessage("msg:new:text").subscribe((message) =>{
-        console.log(message)
+        console.log("ning", message)
         this.messages.push(message)
       })
     })
   }
 
   onClick(message) {
-    console.log("sending", message)
     this.viewChannel.sendMessage("msg:new:text", { body: message })
   }
 

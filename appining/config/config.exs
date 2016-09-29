@@ -5,6 +5,17 @@
 # is restricted to this project.
 use Mix.Config
 
+config :appining, Appining.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "appining_repo",
+  username: "user",
+  password: "password",
+  hostname: "localhost"
+#
+# config :appining, Appining.Repo,
+#   adapter: RethinkDB.Ecto
+config :appining, ecto_repos: [Appining.Repo]
+
 # Configures the endpoint
 config :appining, Appining.Endpoint,
   url: [host: "localhost"],
@@ -18,6 +29,28 @@ config :appining, Appining.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+# Scrapers
+config :appining, :eventful,
+  base_url: "http://api.eventful.com/rest",
+  key: "cswJCZqk4XMsBDsv"
+
+config :mix_test_watch,
+  tasks: [
+    "espec"
+  ]
+
+config :exq,
+  host: "127.0.0.1",
+  port: 6379,
+  namespace: "exq",
+  concurrency: 1000,
+  queues: ["default"]
+
+config :exq_ui,
+  webport: 4040,
+  web_namespace: "",
+  server: true
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

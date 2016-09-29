@@ -10,6 +10,7 @@ defmodule Appining do
       # Start the endpoint when the application starts
       supervisor(Appining.Endpoint, []),
       # Here you could define other workers and supervisors as children
+      worker(Appining.Repo, []),
       # worker(Appining.Worker, [arg1, arg2, arg3]),
     ]
 
