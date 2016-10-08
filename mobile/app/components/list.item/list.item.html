@@ -1,0 +1,16 @@
+<ion-card (click)="onClick()">
+  <ion-card-content>
+    <h2 class="card-title">
+       {{item.title}}
+    </h2>
+    <p>
+       {{item.description}}
+    </p>
+    <p>{{item.source}}</p>
+    <hr/>
+    <p>
+      <ion-icon name="pin"></ion-icon> {{item.distance}}m
+    </p>
+  </ion-card-content>
+
+</ion-card>

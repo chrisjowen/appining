@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="details">
+  <h1>{{item.title}}</h1>
+  <h3>{{item.source}}</h3>
+  <div [innerHtml]="item.description"></div>
+  <div class="address">
+    <span>{{item.location.address1}}</span>
+    <span>{{item.location.address2}}</span>
+    <span>{{item.location.city}}</span>
+    <span>{{item.location.postcode}}</span>
+  </div>
+
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="options"></ion-icon>
+    </button>
+    <ion-title>Events nearby</ion-title>
+  </ion-navbar>
+
+
+</ion-header>
+<ion-content class="list">
+  <div style="background:gray;">
+  </div>
+
+
+  <list-item  *ngFor="let item of items" [item]="item" list-item></list-item>
+</ion-content>
