@@ -12,6 +12,7 @@ config :appining, Appining.Repo,
   username: "user",
   password: "password",
   hostname: "localhost",
+  extensions: [{Geo.PostGIS.Extension, []}],
   pool: Ecto.Adapters.SQL.Sandbox
 
 

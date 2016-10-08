@@ -1,12 +1,12 @@
 import { Component, NgZone, provide } from '@angular/core';
 import { Platform, ionicBootstrap } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
-import { TabsPage } from './pages/tabs/tabs';
-import { NingsPage } from './pages/nings/nings';
+import { ListPage } from './pages/list/list';
 import { Socket, SocketOptions, Channel } from 'phoenix'
 import PhoenixChannels from './services/phoenix_channels'
 import LocationProvider from './services/location_provider'
 import { NingsApi } from './services/nings_api'
+import { Api } from './services/api'
 
 @Component({
   template: '<ion-nav [root]="rootPage">asdasd</ion-nav>'
@@ -17,7 +17,7 @@ export class MyApp {
   public messages : Array<String> = [];
 
   constructor(private platform: Platform, private _ngZone: NgZone) {
-    this.rootPage = TabsPage;
+    this.rootPage = ListPage;
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -36,4 +36,4 @@ let phoenixChannelsProvider = provide(PhoenixChannels, { useFactory: () => {
     }
 
 } });
-ionicBootstrap(MyApp, [phoenixChannelsProvider, LocationProvider, NingsApi]);
+ionicBootstrap(MyApp, [phoenixChannelsProvider, LocationProvider, NingsApi, Api]);

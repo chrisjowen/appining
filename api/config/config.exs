@@ -6,11 +6,12 @@
 use Mix.Config
 
 config :appining, Appining.Repo,
-  adapter: Ecto.Adapters.Postgres,
   database: "appining_repo",
   username: "user",
   password: "password",
-  hostname: "localhost"
+  hostname: "localhost",
+  adapter: Ecto.Adapters.Postgres,
+  extensions: [{Geo.PostGIS.Extension, []}]
 #
 # config :appining, Appining.Repo,
 #   adapter: RethinkDB.Ecto

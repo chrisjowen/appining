@@ -4,7 +4,7 @@ defmodule Appining.Scrapers.Eventful.ResponseParser do
   def parse(document) do
     %{
       meta: parse_pagination_meta(document),
-      events: parse_events(document)
+      events: parse_events(document) 
     }
   end
 
@@ -17,7 +17,40 @@ defmodule Appining.Scrapers.Eventful.ResponseParser do
     )
   end
 
+  # defp fix_types(event) do
+  #   {lat, _} = event.location.lat |> Float.parse
+  #   {long, _} = event.location.long |> Float.parse
+  #   location =  event.location |> Map.merge(%{lat: lat, long: long})
+  #   event |> Map.merge(%{location: location})
+  # end
+
+  # title: name,
+  # description: result |> Map.get("description", nil),
+  # img: nil,
+  # source: "MEETUP",
+  # location: map_location(venue)
+
   def parse_events(document) do
+    document |> xpath(~x"//event"l,
+      [
+        title: ~x"./title/text()"s,
+        url: ~x"./url/text()"s,
+        description: ~x"./description/text()"s,
+        location: [
+          ~x".//..",
+          name: ~x"./venue_name/text()"s,
+          address1: ~x"./venue_address/text()"s,
+          city: ~x"./city_name/text()"s,
+          county: ~x"./region_name/text()"s,
+          postcode: ~x"./postal_code/text()"s,
+          country: ~x"./country_name/text()"s,
+          lat: ~x"./latitude/text()"s,
+          long: ~x"./longitude/text()"s
+        ]
+      ])
+  end
+
+  def parse_events_complex(document) do
       document |> xpath(~x"//event"l,
         [
           title: ~x"./title/text()"s,

@@ -1,19 +1,10 @@
 defmodule Appining.Scrapers.Meetup.Client do
-  use HTTPotion.Base
-
-  alias Appining.Http
-
   @config Application.get_env(:appining, :meetup)
 
-  def search(lat, long, radius, page) do
+  use HTTPotion.Base
+  alias Appining.Http
+  alias Appining.Scrapers.Meetup.ResponseMapper
 
-     get([lat: lat, lon: long, radius: radius, key: @config[:key]] |>  Http.make_qs )
-  end
-
-  def process_url(params) do
-    url = @config[:base_url] <> "/2/open_events.json?" <>  params
-    IO.inspect(url)
-    url
-  end
-
+  def search(lat, long, radius), do: get([lat: lat, lon: long, radius: radius, key: @config[:key]] |>  Http.make_qs )
+  def process_url(params), do: @config[:base_url] <> "/2/open_events.json?" <>  params
 end

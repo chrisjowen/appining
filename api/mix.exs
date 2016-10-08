@@ -28,7 +28,10 @@ defmodule Appining.Mixfile do
        :httpotion,
        :postgrex,
        :tzdata,
-       :exq
+       :exq,
+       :scrivener_ecto,
+       :ex_machina,
+       :faker
       #  :rethinkdb_ecto
        ]
      ]
@@ -58,7 +61,11 @@ defmodule Appining.Mixfile do
      {:dogma, "~> 0.1", only: :dev},
      {:exq, "~> 0.7.2"},
      {:exq_ui, "~> 0.7.0"},
-     {:espec_phoenix, "~> 0.6.1", only: :test, app: false}
+     {:espec_phoenix, "~> 0.6.1", only: :test, app: false},
+     {:geo, "~> 1.1"},
+     {:scrivener_ecto, "~> 1.0"},
+     {:ex_machina, "~> 1.0"},
+     {:faker, "~> 0.5"}
     #  {:rethinkdb_ecto, "~> 0.4"}
    ]
   end

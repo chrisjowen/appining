@@ -26,7 +26,8 @@ defmodule Appining.Router do
 
     post "/", NingController, :create
     get "/nearby/:lat/:long", NingController, :nearby
-    get "/test", NingController, :test
+    get "/offer/nearby/:lat/:long", OfferController, :nearby
+    get "/enqueue", NingController, :enqueue
 
   end
 

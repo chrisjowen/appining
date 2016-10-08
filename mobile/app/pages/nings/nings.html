@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title>
       Contact
-      
+
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,11 +11,16 @@
 
   <ion-list>
     <ion-item *ngFor="let ning of nings">
-      <img src="{{ning.img}}" width="50" height="50" />
       <h3>{{ning.title}}</h3>
-      <small>{{ning.description}}</small>
+
+      <small>{{ning.source}}</small>
+
+      <div [innerHTML]="ning.description"></div>
       <p>
         {{ning.lastMessage}}
+      </p>
+      <p>
+        Distance:  {{ning.distance}}
       </p>
     </ion-item>
   </ion-list>
